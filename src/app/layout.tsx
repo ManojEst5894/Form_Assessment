@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import "@carbon/styles/css/styles.css";
-
+import './globals.scss';
+import '@/styles/global.scss';
 import I18nProvider from "@/providers/I18nProvider"; 
 
 export const metadata: Metadata = {

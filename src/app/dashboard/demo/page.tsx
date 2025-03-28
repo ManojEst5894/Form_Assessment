@@ -18,26 +18,26 @@ const DemoPage = () => {
   };
 
   return (
-    <div style={{ display: 'flex', flexDirection: 'column', gap: '2rem', padding: '2rem' }}>
+    <div className="demo-page">
       {/* Row 1: TextInput and Button */}
-      <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
+      <div className="demo-row">
         <CustomTextInput />
         <Button>Submit</Button>
       </div>
 
       {/* Row 2: TextInput */}
-      <div>
+      <div className="demo-row">
         <CustomTextInput />
       </div>
 
       {/* Row 3: Dropdown */}
-      <div>
+      <div className="demo-row">
         <DropdownComponent onChange={handleDropdownChange} />
       </div>
 
       {/* Row 4: DataTable (conditionally rendered) */}
       {showTable && (
-        <div>
+        <div className="demo-row">
           <DataTableComponent />
         </div>
       )}

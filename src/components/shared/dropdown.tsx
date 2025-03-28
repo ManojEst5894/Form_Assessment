@@ -19,6 +19,7 @@ const DropdownComponent: React.FC<DropdownComponentProps> = ({ onChange }) => {
     <div style={{ width: 400 }}>
       <Dropdown
         id="default"
+        titleText="Dropdown Title" // Added titleText property
         label="This is an example label"
         invalidText="Invalid selection"
         warnText="Please notice the warning"

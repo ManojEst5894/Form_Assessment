@@ -7,6 +7,7 @@ import * as Yup from 'yup';
 import { useRouter } from 'next/navigation';
 import { useTranslation } from 'react-i18next';
 import i18n from '@/i18n'; // Ensure correct import
+import './login.scss'; // Import SCSS file
 
 const Login = () => {
     const router = useRouter();
@@ -46,7 +47,7 @@ const Login = () => {
     };
 
     return (
-        <Grid>
+        <Grid className="login-container">
             <Column sm={4} md={8} lg={16}>
                 <Header>
                     <HeaderName href="#" prefix="">
@@ -67,9 +68,9 @@ const Login = () => {
                     </HeaderGlobalBar>
                 </Header>
             </Column>
-            <Column sm={4} md={4} lg={4} style={{ marginTop: '4rem' }}>
+            <Column sm={4} md={4} lg={4} className="login-form">
                 <form onSubmit={formik.handleSubmit}>
-                    <div style={{ marginBottom: '1rem' }}>
+                    <div className="form-field">
                         <TextInput
                             id="username"
                             labelText={t('username')}
@@ -80,7 +81,7 @@ const Login = () => {
                             invalidText={formik.errors.username}
                         />
                     </div>
-                    <div style={{ marginBottom: '1rem' }}>
+                    <div className="form-field">
                         <PasswordInput
                             id="password"
                             labelText={t('password')}
