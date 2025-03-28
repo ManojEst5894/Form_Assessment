@@ -1,0 +1,10 @@
+{
+  "form": "フォーム",
+  "username": "ユーザー名",
+  "password": "パスワード",
+  "login": "ログイン",
+  "language": "言語",
+  "is_required": "は必須です",
+  "must_be_at_least_6_characters": "は6文字以上である必要があります",
+  "required": "必須"
+}

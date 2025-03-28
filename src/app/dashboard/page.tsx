@@ -13,23 +13,29 @@ const Dashboard = () => {
             <Grid>
                 <Column sm={4} md={4} lg={4}>
                     <Tile
-                        onClick={() => router.push('/data-model')} // Updated navigation path
+                        onClick={() => router.push('/data-model')}
                         style={{ cursor: 'pointer', textAlign: 'center', padding: '2rem' }}
                     >
                         <Archive size={32} />
-                        <p>Archive</p>
+                        <p>Data Table</p>
                     </Tile>
                 </Column>
                 <Column sm={4} md={4} lg={4}>
-                    <Tile style={{ textAlign: 'center', padding: '2rem' }}>
+                    <Tile
+                        onClick={() => router.push('/browse')}
+                        style={{ cursor: 'pointer', textAlign: 'center', padding: '2rem' }}
+                    >
                         <Folder size={32} />
-                        <p>Browse</p>
+                        <p>Products</p>
                     </Tile>
                 </Column>
                 <Column sm={4} md={4} lg={4}>
-                    <Tile style={{ textAlign: 'center', padding: '2rem' }}>
+                    <Tile
+                        onClick={() => router.push('/dashboard/demo')} // Updated navigation
+                        style={{ cursor: 'pointer', textAlign: 'center', padding: '2rem' }}
+                    >
                         <Report size={32} />
-                        <p>Reports</p>
+                        <p>Demo</p>
                     </Tile>
                 </Column>
             </Grid>
