@@ -1,0 +1,22 @@
+{
+  "header": {
+    "form": "IBM 인텔리스피어",
+    "language": "언어"
+  },
+  "loginForm": {
+    "username": "사용자 이름",
+    "password": "비밀번호",
+    "login": "로그인",
+    "is_required": "필수입니다",
+    "must_be_at_least_6_characters": "6자 이상이어야 합니다",
+    "required": "필수",
+    "welcome": "인텔리스피어에 오신 것을 환영합니다"
+  },
+  "dashboard": {
+    "welcomeMessage": "대시보드에 오신 것을 환영합니다",
+    "dataTable": "데이터 테이블",
+    "products": "제품",
+    "shared": "공유됨",
+    "form": "양식"
+  }
+}

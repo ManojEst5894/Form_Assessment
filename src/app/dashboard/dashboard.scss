@@ -1,0 +1,43 @@
+@use '@carbon/react' as *;
+@use '@carbon/colors' as *;
+@use '@carbon/react/scss/colors';
+@use '@carbon/layout';
+
+.dashboard-container {
+  padding: $spacing-10;
+  background-color: $background;
+}
+
+.dashboard-title {
+  font-size: $spacing-08;
+  font-weight: bold;
+  text-align: center;
+  margin-bottom:$spacing-07;
+  color: $background-brand;
+}
+
+.dashboard-grid {
+  display: flex;
+  gap: $spacing-05;
+  justify-content: center;
+}
+
+.dashboard-tile {
+  text-align: center;
+  padding: $spacing-06  ;
+  background-color:$background;
+  border: $spacing-01 solid $background-selected-hover;
+  border-radius: $spacing-02;
+  transition: transform 0.3s, box-shadow 0.3s;
+
+  &:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 $spacing-02 $spacing-03 $background-inverse;
+  }
+
+  p {
+    margin-top: $spacing-03;
+    font-size: $spacing-05;
+    color:$background-brand;
+  }
+}

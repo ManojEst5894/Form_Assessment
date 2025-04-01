@@ -1,0 +1,46 @@
+@use '@carbon/react/scss/colors';
+@use "@carbon/react" as *;
+@use "@carbon/colors" as *;
+@use '@carbon/layout';
+
+.data-model-container {
+  padding: $spacing-09;
+}
+
+.table-container {
+  margin: $spacing-05 0;
+}
+
+.table-toolbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.batch-actions {
+  background-color:$background;
+}
+
+.toolbar-content {
+  display: flex;
+  gap:$spacing-05;
+}
+
+.toolbar-search {
+  flex-grow: 1;
+}
+
+.add-new-button {
+  background-color: $background-brand;
+  color: $background;
+}
+
+.data-table {
+  margin-top:$spacing-05;
+}
+
+.confirmation-modal {
+  .bx--modal-content {
+    text-align: center;
+  }
+}

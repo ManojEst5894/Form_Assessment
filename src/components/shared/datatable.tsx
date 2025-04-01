@@ -12,41 +12,15 @@ import {
   TableCell,
 } from "@carbon/react";
 
-const DataTableComponent = () => {
-  const rows = [
-    {
-      id: 'load-balancer-1',
-      name: 'Load Balancer 1',
-      rule: 'Round robin',
-      status: 'Starting',
-      other: 'Test',
-      example: '22',
-    },
-    {
-      id: 'load-balancer-2',
-      name: 'Load Balancer 2',
-      rule: 'DNS delegation',
-      status: 'Active',
-      other: 'Test',
-      example: '22',
-    },
-    {
-      id: 'load-balancer-3',
-      name: 'Load Balancer 3',
-      rule: 'Round robin',
-      status: 'Disabled',
-      other: 'Test',
-      example: '22',
-    },
-  ];
+interface DataTableProps {
+  rows: Array<{ id: string; cells: Array<{ id: string; value: string }> }> | null | undefined;
+  headers: Array<{ key: string; header: string }> | null | undefined;
+}
 
-  const headers = [
-    { key: 'name', header: 'Name' },
-    { key: 'rule', header: 'Rule' },
-    { key: 'status', header: 'Status' },
-    { key: 'other', header: 'Other' },
-    { key: 'example', header: 'Example' },
-  ];
+function DataTableComponent({ rows, headers }: DataTableProps) {
+  if (!rows || !headers) {
+    return <div>No data available</div>;
+  }
 
   return (
     <DataTable rows={rows} headers={headers}>
@@ -76,6 +50,6 @@ const DataTableComponent = () => {
       )}
     </DataTable>
   );
-};
+}
 
 export default DataTableComponent;

@@ -1,13 +1,13 @@
 'use client';
 
 import React, { useState, useEffect } from 'react';
-import { Grid, Column, TextInput, PasswordInput, Button, Header, HeaderName, Dropdown, HeaderGlobalBar } from "@carbon/react";
+import { Grid, Column, TextInput, PasswordInput, Button } from "@carbon/react";
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
 import { useRouter } from 'next/navigation';
 import { useTranslation } from 'react-i18next';
-import i18n from '@/i18n'; // Ensure correct import
-import './login.scss'; // Import SCSS file
+import i18n from '@/i18n'; 
+
 
 const Login = () => {
     const router = useRouter();
@@ -26,11 +26,13 @@ const Login = () => {
             password: '',
         },
         validationSchema: Yup.object({
-            username: Yup.string().required(`${t('username')} ${t('is_required')}`),
+            username: Yup.string().required(`${t('loginForm.username')} ${t('loginForm.is_required')}`),
             password: Yup.string()
-                .min(6, `${t('password')} ${t('must_be_at_least_6_characters')}`)
-                .required(t('required')),
+                .min(6, `${t('loginForm.password')} ${t('loginForm.must_be_at_least_6_characters')}`)
+                .required(t('loginForm.required')),
         }),
+        validateOnBlur: true,
+        validateOnChange: true,
         onSubmit: (values) => {
             console.log('Form Values:', values);
             router.push('/dashboard');
@@ -48,35 +50,20 @@ const Login = () => {
 
     return (
         <Grid className="login-container">
-            <Column sm={4} md={8} lg={16}>
-                <Header>
-                    <HeaderName href="#" prefix="">
-                        {t('form')}
-                    </HeaderName>
-                    <HeaderGlobalBar>
-                        <Dropdown
-                            id="language-dropdown"
-                            label={t('language')}
-                            titleText={t('language')}
-                            items={[
-                                { id: 'en', label: 'English' },
-                                { id: 'ja', label: '日本語' }
-                            ]}
-                            selectedItem={{ id: language, label: language === 'en' ? 'English' : '日本語' }}
-                            onChange={(event) => handleLanguageChange(event.selectedItem)}
-                        />
-                    </HeaderGlobalBar>
-                </Header>
-            </Column>
             <Column sm={4} md={4} lg={4} className="login-form">
+                <h2 className="form-title">{t('loginForm.welcome')}</h2>
                 <form onSubmit={formik.handleSubmit}>
                     <div className="form-field">
                         <TextInput
                             id="username"
-                            labelText={t('username')}
+                            labelText={t('loginForm.username')}
                             name="username"
                             value={formik.values.username}
                             onChange={formik.handleChange}
+                            onBlur={(e) => {
+                                formik.handleBlur(e);
+                                formik.validateField('username');
+                            }}
                             invalid={formik.touched.username && !!formik.errors.username}
                             invalidText={formik.errors.username}
                         />
@@ -84,15 +71,19 @@ const Login = () => {
                     <div className="form-field">
                         <PasswordInput
                             id="password"
-                            labelText={t('password')}
+                            labelText={t('loginForm.password')}
                             name="password"
                             value={formik.values.password}
                             onChange={formik.handleChange}
+                            onBlur={(e) => {
+                                formik.handleBlur(e);
+                                formik.validateField('password');
+                            }}
                             invalid={formik.touched.password && !!formik.errors.password}
                             invalidText={formik.errors.password}
                         />
                     </div>
-                    <Button type="submit">{t('login')}</Button>
+                    <Button type="submit">{t('loginForm.login')}</Button>
                 </form>
             </Column>
         </Grid>

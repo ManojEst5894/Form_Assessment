@@ -1,0 +1,54 @@
+@use '@carbon/react/scss/colors';
+@use "@carbon/react" as *;
+@use "@carbon/colors" as *;
+@use '@carbon/layout';
+
+.product-details {
+  padding-top: $spacing-10;
+}
+
+.product-grid {
+  gap:$spacing-03,$spacing-01;
+}
+
+.product-title {
+  font-size:$spacing-07;
+  font-weight: bold;
+}
+
+.product-image-column {
+  display: flex;
+  justify-content: center;
+}
+
+.product-image-tile {
+  padding:$spacing-03,$spacing-01;
+}
+
+.product-image {
+  max-width: 100%;
+  border-radius:$spacing-03;
+}
+
+.product-info-column {
+  padding:$spacing-03,$spacing-01;
+}
+
+.product-info-tile {
+  padding: $spacing-05,$spacing-02;
+}
+
+.product-price,
+.product-description,
+.product-brand,
+.product-category,
+.product-rating,
+.product-stock {
+  margin-bottom:$spacing-03,$spacing-01;
+}
+
+.loading-text {
+  text-align: center;
+  font-size: $spacing-06;
+  color: gray;
+}

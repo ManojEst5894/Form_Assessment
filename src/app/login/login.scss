@@ -6,12 +6,58 @@
 
 .login-container {
   margin: $spacing-06 auto;
-}
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background-color: $background;
 
-.login-form {
-  margin-top: $spacing-10;
-}
+  .login-form {
+    margin-top: $spacing-10;
+    background-color:$background;
+    padding: $spacing-07;
+    border-radius: $spacing-03;
+    box-shadow: 0 $spacing-02 $spacing-03 $background-inverse;
 
-.form-field {
-  margin-bottom:$spacing-05;
+    .form-title {
+      text-align: center;
+      font-size: $spacing-06;
+      font-weight: bold;
+      margin-bottom: $spacing-06;
+      color:$background-brand;
+    }
+
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: $spacing-06;
+
+      .form-field {
+        margin-bottom: $spacing-05;
+        display: flex;
+        flex-direction: column;
+
+
+          &:focus {
+            border-color:$background-brand;
+            box-shadow: 0 0 0 $spacing-07 $background-inverse-hover;
+          }
+      }
+
+      button {
+        background-color:$background-brand;
+        color: $background;
+        border: none;
+        padding: $spacing-04;
+        border-radius: $spacing-02;
+        font-size: $spacing-05;
+        cursor: pointer;
+        transition: background-color 0.3s;
+
+        &:hover {
+          background-color:$background-brand;
+        }
+      }
+    }
+  }
 }

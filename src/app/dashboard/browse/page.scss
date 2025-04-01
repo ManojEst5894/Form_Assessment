@@ -1,0 +1,29 @@
+@use '@carbon/react/scss/colors';
+@use "@carbon/react" as *;
+@use "@carbon/colors" as *;
+@use '@carbon/layout';
+
+.browse-container {
+  padding: $spacing-09;
+  background-color:$background;
+}
+
+.product-column {
+  text-align: center;
+  padding: $spacing-03,$spacing-01;
+  border: $spacing-01 solid $background;
+  border-radius: $spacing-03;
+  transition: transform 0.2s ease-in-out;
+
+  &:hover {
+    transform: scale(1.05);
+    cursor: pointer;
+  }
+}
+
+.product-image {
+  max-width: 100%;
+  height: auto;
+  border-radius:$spacing-02;
+  cursor: pointer;
+}

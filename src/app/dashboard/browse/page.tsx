@@ -1,7 +1,8 @@
 "use client";
 import React, { useEffect, useState } from "react";
-import { Grid, Column, Tile } from "@carbon/react";
+import { Grid, Column, Tile, Row } from "@carbon/react";
 import { useRouter } from "next/navigation";
+import "./page.scss";
 
 const Browse = () => {
   const [products, setProducts] = useState<Product[]>([]);
@@ -26,20 +27,24 @@ const Browse = () => {
   };
 
   return (
-    <div className="bx--grid bx--grid--full-width bx--grid--no-gutter">
-      <div className="bx--row">
-        <div className="bx--col-lg-12">
-          <h1 className="browse-title">Browse Products</h1>
-        </div>
-      </div>
+    <div className="browse-container">
       <Grid>
+        <Column sm={4} md={8} lg={16}>
+          <h1>Browse Products</h1>
+        </Column>
         {products.map((product) => (
-          <Column key={product.id} sm={4} md={4} lg={4}>
-            <Tile className="product-tile">
+          <Column
+            key={product.id}
+            sm={2}
+            md={4}
+            lg={4}
+            className="product-column"
+          >
+            <Tile>
               <img
                 src={product.thumbnail}
                 alt={product.title}
-                className="product-thumbnail"
+                className="product-image"
                 onClick={() => handleImageClick(product.id)}
               />
               <p>{product.title}</p>

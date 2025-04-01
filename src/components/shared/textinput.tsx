@@ -1,29 +1,75 @@
 'use client';
 
 import { useState } from 'react';
-import { TextInput, Button } from  "@carbon/react";
+import { TextInput, Button, Grid, Column } from "@carbon/react";
 
+interface CustomTextInputProps {
+  value: string;
+  className?: string;
+  defaultValue?: string;
+  helperText?: string;
+  id: string;
+  disabled?: boolean;
+  invalidText?: string;
+  labelText: string;
+  onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  onClick?: () => void;
+  placeholder?: string;
+  size?: 'sm' | 'md' | 'lg';
+  type?: string;
+  warnText?: string;
+  showButton?: boolean;
+  buttonText?: string;
+  onButtonClick?: () => void;
+}
 
-const CustomTextInput = () => {
-  const [value, setValue] = useState('');
+const CustomTextInput = ({
+  className,
+  value,
+  helperText,
+  id,
+  invalidText,
+  labelText,
+  onChange,
+  onClick,
+  disabled,
+  placeholder,
+  size = 'md',
+  type = 'text',
+  warnText,
+  showButton = false,
+  buttonText,
+  onButtonClick,
+}: CustomTextInputProps) => {
+
 
   return (
-    <div style={{ width: 300 }}>
-      <TextInput
-        className="input-test-class"
-        defaultValue={value}
-        // helperText="Helper text"
-        id="text-input-1"
-        invalidText="Error message goes here"
-        labelText="Textinput"
-        onChange={(e) => setValue(e.target.value)}
-        onClick={() => console.log('Input clicked')}
-        placeholder=""
-        size="md"
-        type="text"
-        warnText="Warning message that is really long can wrap to more lines but should not be excessively long."
-      />
-    </div>
+    <Grid>
+      <Column sm={4} md={8} lg={12}>
+        <TextInput
+          className={className}
+          value={value}
+          helperText={helperText}
+          id={id}
+          invalidText={invalidText}
+          labelText={labelText}
+          onChange={onChange}
+          onClick={onClick}
+          placeholder={placeholder}
+          size={size}
+          type={type}
+          warnText={warnText}
+          disabled={disabled}
+        />
+      </Column>
+      {showButton && (
+        <Column sm={2} md={4} lg={4}>
+          <Button onClick={onButtonClick}>
+            {buttonText}
+          </Button>
+        </Column>
+      )}
+    </Grid>
   );
 };
 
