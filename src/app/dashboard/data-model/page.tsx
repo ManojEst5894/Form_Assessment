@@ -20,7 +20,7 @@ import {
   Modal,
 } from "@carbon/react";
 import { TrashCan } from "@carbon/icons-react";
-import "./page.scss"; // Import SCSS file
+import "./page.scss"; 
 
 const initialHeaders = [
   { key: "id", header: "ID" },
@@ -47,8 +47,8 @@ const DataModel = () => {
 
   const handleConfirmDelete = () => {
     setRows((prevRows) => prevRows.filter((row) => !selectedRows.includes(row.id)));
-    setSelectedRows([]); // Clear selection after deletion
-    setIsModalOpen(false); // Close modal
+    setSelectedRows([]); 
+    setIsModalOpen(false); 
   };
 
   const cancelBatchDelete = () => {
@@ -93,7 +93,14 @@ const DataModel = () => {
                     </TableBatchAction>
                   </TableBatchActions>
                   <TableToolbarContent className="toolbar-content">
-                    <TableToolbarSearch onChange={onInputChange} className="toolbar-search" />
+                    <TableToolbarSearch
+                      onChange={(event: "" | Partial<React.ChangeEventHandler<HTMLInputElement>>, value?: string) => {
+                        if (typeof event !== "string" && event?.target) {
+                          onInputChange(event as React.ChangeEvent<HTMLInputElement>);
+                        }
+                      }}
+                      className="toolbar-search"
+                    />
                     <Button
                       onClick={() => alert("Add new row")}
                       kind="primary"

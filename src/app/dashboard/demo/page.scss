@@ -1,9 +1,14 @@
+@use '@carbon/react' as *;
+@use '@carbon/colors' as *;
+@use '@carbon/react/scss/colors';
+@use '@carbon/layout';
+
 .demo-page {
-    padding: 50px;
+    padding: $spacing-09;
 }
 
 .demo-column {
-    padding: 8px;
+    padding: $spacing-03;
     box-sizing: border-box;
 }
 
@@ -16,5 +21,5 @@
 }
 
 .data-table-component {
-    margin-top: 16px;
+    margin-top: $spacing-05;
 }

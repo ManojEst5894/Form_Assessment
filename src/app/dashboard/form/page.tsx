@@ -1,12 +1,11 @@
 "use client";
 import React, { useEffect, useState } from "react";
-import { Grid, Column, Button } from "@carbon/react";
+import { Grid, Column, Button, Dropdown } from "@carbon/react";
 import { useRouter } from "next/navigation";
 import { useDispatch, useSelector } from "react-redux";
 import { saveFormData } from "@/redux/formSlice";
 import { RootState } from "@/redux/store";
 import CustomTextInput from "@/components/shared/textinput";
-import DropdownComponent from "@/components/shared/dropdown";
 import { useFormik } from "formik";
 import * as Yup from "yup";
 
@@ -21,8 +20,8 @@ const FormPage = () => {
         dropdown2: Yup.string().required("Dropdown 2 is required"),
         textInput1: Yup.string().required("Text Input 1 is required"),
         textInput2: Yup.string().required("Text Input 2 is required"),
+        textInputWithButton: Yup.string().required("Text Input With Button is required"),
     });
-    
 
     const formik = useFormik({
         initialValues: {
@@ -30,10 +29,11 @@ const FormPage = () => {
             dropdown2: "",
             textInput1: "",
             textInput2: "",
+            textInputWithButton: "",
         },
         validationSchema,
-        validateOnChange: false, 
-        validateOnBlur: false,  
+        validateOnChange: false,
+        validateOnBlur: false,
         onSubmit: (values) => {
             dispatch(saveFormData(values));
             console.log(values);
@@ -44,12 +44,10 @@ const FormPage = () => {
     useEffect(() => {
         if (formData) {
             formik.setValues(formData);
-            console.log( formik.setValues(formData));
+            console.log(formik.setValues(formData));
             setIsReadOnly(true);
         }
     }, [formData]);
-   
-    
 
     return (
         <div className="form-container">
@@ -59,13 +57,14 @@ const FormPage = () => {
                         <h1 className="form-title">Form Title</h1>
                     </Column>
                     <Column sm={4} md={8} lg={12} className="form-field">
-                        <DropdownComponent
+                        <Dropdown
                             id="dropdown1"
                             titleText="Dropdown 1"
-                            options={[{ text: 'Select the option' }, { text: 'Option 1' }, { text: 'Option 2' }, { text: 'Option 3' }]}
-                            initialSelectedItem={formik.values.dropdown1}
-                            onChange={(value) => {
-                                formik.setFieldValue("dropdown1", value?.text || "");
+                            label="Select the option"
+                            items={["Option 1", "Option 2", "Option 3"]}
+                            selectedItem={formik.values.dropdown1}
+                            onChange={({ selectedItem }) => {
+                                formik.setFieldValue("dropdown1", selectedItem || "");
                                 formik.setFieldTouched("dropdown1", true);
                             }}
                             disabled={isReadOnly}
@@ -75,12 +74,15 @@ const FormPage = () => {
                         )}
                     </Column>
                     <Column sm={4} md={8} lg={12} className="form-field">
-                        <DropdownComponent
+                        <Dropdown
                             id="dropdown2"
                             titleText="Dropdown 2"
-                            options={[{ text: 'Select the option' }, { text: 'Option 1' }, { text: 'Option 2' }, { text: 'Option 3' }]}
-                            value={formik.values.dropdown2}
-                            onChange={(value) => formik.setFieldValue("dropdown2", value?.text || "")} 
+                            label="Select the option"
+                            items={["Option 1", "Option 2", "Option 3"]}
+                            selectedItem={formik.values.dropdown2}
+                            onChange={({ selectedItem }) => {
+                                formik.setFieldValue("dropdown2", selectedItem || "");
+                            }}
                             disabled={isReadOnly}
                         />
                         {formik.touched.dropdown2 && formik.errors.dropdown2 && (

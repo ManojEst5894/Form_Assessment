@@ -4,16 +4,22 @@ import React from 'react';
 import { Header, HeaderName, Dropdown, HeaderGlobalBar, HeaderGlobalAction } from "@carbon/react";
 import { UserAvatar, Logout } from "@carbon/icons-react";
 import { useTranslation } from 'react-i18next';
-import i18n from '@/i18n';
-// import './HeaderComponent.scss';
 
 interface HeaderComponentProps {
-    language: string;
-    onLanguageChange: (selectedItem: { id: string; label: string; } | null) => void;
+    readonly language: string;
+    readonly onLanguageChange: (selectedItem: { id: string; label: string; } | null) => void;
 }
 
 function HeaderComponent({ language, onLanguageChange }: HeaderComponentProps) {
     const { t } = useTranslation();
+
+    const languageMap: { [key: string]: string } = {
+        en: 'English',
+        ja: '日本語',
+        ko: '한국어',
+    };
+
+    const selectedLanguage = languageMap[language] || '';
 
     return (
         <Header className="custom-header">
@@ -28,7 +34,7 @@ function HeaderComponent({ language, onLanguageChange }: HeaderComponentProps) {
                     <Dropdown
                         id="inline"
                         initialSelectedItem={{
-                            text: language === 'en' ? 'English' : language === 'ja' ? '日本語' : language === 'ko' ? '한국어' : ''
+                            text: selectedLanguage,
                         }}
                         itemToString={(item) => (item ? item.text : '')}
                         items={[
@@ -36,10 +42,12 @@ function HeaderComponent({ language, onLanguageChange }: HeaderComponentProps) {
                             { text: '日本語', id: 'ja' },
                             { text: '한국어', id: 'ko' }
                         ]}
-                        label={language === 'en' ? 'English' : language === 'ja' ? '日本語' : language === 'ko' ? '한국어' : ''}
+                        label={selectedLanguage}
                         titleText={t('header.language')}
                         type="inline"
-                        onChange={(event) => onLanguageChange({ id: event.selectedItem.id, label: event.selectedItem.text })}
+                        onChange={(event) => {
+                            onLanguageChange({ id: event.selectedItem?.id ?? '', label: event.selectedItem?.text ?? '' });
+                        }}
                     />
                 </div>
                 <HeaderGlobalAction aria-label="Logout">

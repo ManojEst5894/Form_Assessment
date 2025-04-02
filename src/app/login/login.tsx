@@ -1,7 +1,7 @@
 'use client';
 
-import React, { useState, useEffect } from 'react';
-import { Grid, Column, TextInput, PasswordInput, Button } from "@carbon/react";
+import React, {useEffect } from 'react';
+import { Grid, Column, TextInput, Button, PasswordInput } from "@carbon/react";
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
 import { useRouter } from 'next/navigation';
@@ -12,11 +12,9 @@ import i18n from '@/i18n';
 const Login = () => {
     const router = useRouter();
     const { t } = useTranslation();
-    const [language, setLanguage] = useState(i18n.language || 'en');
 
     useEffect(() => {
-        const savedLang = localStorage.getItem('language') || 'en';
-        setLanguage(savedLang);
+        const savedLang = localStorage.getItem('language') ?? 'en';
         i18n.changeLanguage(savedLang);
     }, []);
 
@@ -38,15 +36,6 @@ const Login = () => {
             router.push('/dashboard');
         },
     });
-
-    const handleLanguageChange = (selectedItem: { id: string; label: string; } | null) => {
-        if (selectedItem) {
-            const newLang = selectedItem.id;
-            setLanguage(newLang);
-            i18n.changeLanguage(newLang);
-            localStorage.setItem('language', newLang);
-        }
-    };
 
     return (
         <Grid className="login-container">
@@ -76,11 +65,11 @@ const Login = () => {
                             value={formik.values.password}
                             onChange={formik.handleChange}
                             onBlur={(e) => {
-                                formik.handleBlur(e);
+                              formik.handleBlur(e);
                                 formik.validateField('password');
                             }}
-                            invalid={formik.touched.password && !!formik.errors.password}
-                            invalidText={formik.errors.password}
+                           invalid={formik.touched.password && !!formik.errors.password}
+                           invalidText={formik.errors.password}
                         />
                     </div>
                     <Button type="submit">{t('loginForm.login')}</Button>

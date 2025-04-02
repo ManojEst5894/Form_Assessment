@@ -4,7 +4,6 @@ import { useState } from 'react';
 import { Dropdown } from "@carbon/react";
 
 interface DropdownComponentProps {
-  initialSelectedItem:{};
   id: string;
   disabled?: boolean;
   titleText: string;
@@ -13,7 +12,7 @@ interface DropdownComponentProps {
 }
 
 const DropdownComponent = ({ onChange,
-  id, options, titleText, disabled,initialSelectedItem}: DropdownComponentProps) => {
+  id, options, titleText, disabled}: DropdownComponentProps) => {
   const [selectedItem, setSelectedItem] = useState(options[0]);
   const handleChange = ({ selectedItem }: { selectedItem: any }) => {
     setSelectedItem(selectedItem);

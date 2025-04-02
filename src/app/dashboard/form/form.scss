@@ -1,35 +1,35 @@
+@use '@carbon/react' as *;
+@use '@carbon/colors' as *;
+@use '@carbon/react/scss/colors';
+@use '@carbon/layout';
+
 .form-container {
-    padding: 2rem;
-    background-color: #f9f9f9;
+    padding: $spacing-09;
+    background-color:$background;
 }
 
 .form-grid {
-    gap: 1rem;
+    gap:$spacing-04;
 }
 
 .form-header {
     text-align: center;
-    margin-bottom: 1rem;
 }
 
 .form-title {
-    font-size: 2rem;
+    font-size:$spacing-07;
     font-weight: bold;
-    color: #333;
+    color: $background-inverse-hover;
 }
 
 .form-field {
-    margin-bottom: 1rem;
-}
-
-.form-actions {
-    text-align: center;
+    margin-bottom:$spacing-03;
 }
 
 .submit-button {
-    background-color: #0072c3;
-    color: #fff;
+    background-color:$background-brand;
+    color:$background;
     &:hover {
-        background-color: #005bb5;
+        background-color:$background-brand;
     }
 }

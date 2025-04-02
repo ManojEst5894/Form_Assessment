@@ -13,8 +13,8 @@ import {
 } from "@carbon/react";
 
 interface DataTableProps {
-  rows: Array<{ id: string; cells: Array<{ id: string; value: string }> }> | null | undefined;
-  headers: Array<{ key: string; header: string }> | null | undefined;
+  readonly rows: Array<{ id: string; cells: Array<{ id: string; value: string }> }> | null | undefined;
+  readonly headers: Array<{ key: string; header: string }> | null | undefined;
 }
 
 function DataTableComponent({ rows, headers }: DataTableProps) {
@@ -30,7 +30,7 @@ function DataTableComponent({ rows, headers }: DataTableProps) {
             <TableHead>
               <TableRow>
                 {headers.map((header) => (
-                  <TableHeader {...getHeaderProps({ header })} key={header.key}>
+                  <TableHeader {...getHeaderProps({ header })} key={header.key} onClick={getHeaderProps({ header }).onClick as unknown as React.MouseEventHandler<HTMLButtonElement>}>
                     {header.header}
                   </TableHeader>
                 ))}

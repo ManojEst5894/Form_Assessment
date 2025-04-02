@@ -13,7 +13,7 @@ const DemoPage = () => {
   const [selectedOption, setSelectedOption] = useState<string | null>(null);
 
   const handleDropdownChange = (selectedItem: any) => {
-    if (selectedItem && selectedItem.text) {
+    if (selectedItem?.text) {
       setSelectedOption(selectedItem.text);
     } else {
       setSelectedOption(null);

@@ -1,6 +1,6 @@
 "use client";
 import React, { useEffect, useState } from "react";
-import { Grid, Column, Tile, Row } from "@carbon/react";
+import { Grid, Column } from "@carbon/react";
 import { useRouter } from "next/navigation";
 import "./page.scss";
 
@@ -40,18 +40,25 @@ const Browse = () => {
             lg={4}
             className="product-column"
           >
-            <Tile>
+            <button
+              onClick={() => handleImageClick(product.id)}
+              onKeyDown={(e) => {
+                if (e.key === "Enter" || e.key === " ") {
+                  handleImageClick(product.id);
+                }
+              }}
+              className="tile-button"
+            >
               <img
                 src={product.thumbnail}
                 alt={product.title}
                 className="product-image"
-                onClick={() => handleImageClick(product.id)}
               />
               <p>{product.title}</p>
               <p>
                 <strong>Price:</strong> ${product.price}
               </p>
-            </Tile>
+            </button>
           </Column>
         ))}
       </Grid>

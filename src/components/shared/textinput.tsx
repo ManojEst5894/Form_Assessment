@@ -1,12 +1,10 @@
 'use client';
 
-import { useState } from 'react';
 import { TextInput, Button, Grid, Column } from "@carbon/react";
 
 interface CustomTextInputProps {
   value: string;
   className?: string;
-  defaultValue?: string;
   helperText?: string;
   id: string;
   disabled?: boolean;

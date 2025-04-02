@@ -4,16 +4,14 @@ import I18nProvider from "@/providers/I18nProvider";
 import { Provider } from "react-redux";
 import store from "@/redux/store";
 import React, { useState, useEffect } from 'react';
-import { useTranslation } from 'react-i18next';
 import i18n from '@/i18n';
 import HeaderComponent from './login/HeaderComponent';
 
-export default function RootLayout({ children }: { children: React.ReactNode }) {
-  const { t } = useTranslation();
-  const [language, setLanguage] = useState(i18n.language || 'en');
+export default function RootLayout({ children }: { readonly children: React.ReactNode }) {
+  const [language, setLanguage] = useState(i18n.language ?? 'en');
 
   useEffect(() => {
-    const savedLang = localStorage.getItem('language') || 'en';
+    const savedLang = localStorage.getItem('language') ?? 'en';
     setLanguage(savedLang);
     i18n.changeLanguage(savedLang);
   }, []);
